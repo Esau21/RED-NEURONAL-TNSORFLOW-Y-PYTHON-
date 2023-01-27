@@ -1,0 +1,50 @@
+para que nuestra red pueda aprender el machine learning es necesario lo siguiente:
+
+necestamos ver la formula de como pasar grados celsius a fahrenheit
+sabemos que la formula para pasar de celsius a fahrenheit es:
+
+c = f * 1.8 + 32
+
+un breve ejemplo seria 
+ def function(C):
+    F = C * 18 + 32
+    return F 
+pero para poder pasarlo a aprendizaje automatico seria de la siguiente forma 
+
+importamos las librerias tensorflow, numpy y matplolib.pyplot as plt 
+ y ahora empezamos a hacer el aprendizaje automatico(Machine learning)
+
+
+ definimos dos varibales una que se llame celsius y otra fahrenheit
+ con dos array 
+
+celsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)
+fahrenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
+
+luego de esto vamos a definir las capas densas con dos varibales mas 
+
+capa = tf.keras.layers.Dense(units=1, input_shape=[1])
+modelo = tf.keras.Sequential([capa])
+
+ahora bien una vez definido esto  vamos a complilar nuestro modelo 
+ modelo.compile(
+    optimizer=tf.keras.optimizers.Adam(0.1),
+    loss='mean_squared_error'
+ )
+
+Luego de a ver compilado nuestro modelo  empezamos a complilarlo de la siguiente manera 
+print("Comenzando entrenamiento...")
+historial = modelo.fit(celsius, fahrenheit, epochs=1000, verbose=False)
+print("Modelo entrenado con exito!")
+
+y por ultimo haremos una prediccion para que nos muestre nuestros grados fahrenheit
+plt.xlabel("# Epoca")
+plt.ylabel("Magnitud de perdida")
+plt.plot(historial.history["loss"])
+
+print("Hagamos una prediccion!")
+resultado = modelo.predict([100.0])
+print("El resultado es: ", str(resultado) + " fahrenheir!")
+
+print("Varibales internas del modelo!")
+print(capa.get_weights())

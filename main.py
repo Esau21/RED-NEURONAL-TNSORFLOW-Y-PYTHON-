@@ -14,7 +14,7 @@ def grados():
     loss='mean_squared_error'
  )
 
- print("Estamos comenzando a entrenar la red")
+ print("Estamos comenzando a entrenar la Red Neuronal espera...")
  historial = modelo.fit(celsius, fahrenheit, epochs=1000, verbose=False)
  print("El modelo se ha entrenado con exito.")
 

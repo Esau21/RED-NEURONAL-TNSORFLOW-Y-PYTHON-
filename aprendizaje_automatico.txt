@@ -48,3 +48,10 @@ print("El resultado es: ", str(resultado) + " fahrenheir!")
 
 print("Varibales internas del modelo!")
 print(capa.get_weights())
+
+
+
+
+Ahora para poder medir esto se hace de la siguiente manera para ver si la red neuronal se acerco al proximado
+
+c = 100 * 1.79 + 31.9
